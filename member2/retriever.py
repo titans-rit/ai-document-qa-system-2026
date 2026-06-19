@@ -38,6 +38,9 @@ def retrieve(query: str, index_path: str = "faiss_index", k: int = 3):
 
 
 if __name__ == "__main__":
+	if not os.environ.get("HF_TOKEN"):
+		print("Hint: set HF_TOKEN to avoid HF Hub unauthenticated warnings (see member2/README.md).")
+
 	q = "What is Hello Timer?"
 	res = retrieve(q)
 	for i, item in enumerate(res, 1):

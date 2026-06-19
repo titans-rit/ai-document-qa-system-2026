@@ -42,5 +42,7 @@ def build_and_persist_faiss_index(index_path: str = "faiss_index") -> None:
 
 
 if __name__ == "__main__":
+	if not os.environ.get("HF_TOKEN"):
+		print("Hint: set HF_TOKEN to avoid HF Hub unauthenticated warnings (see member2/README.md).")
 	build_and_persist_faiss_index()
 	print("Index built.")
