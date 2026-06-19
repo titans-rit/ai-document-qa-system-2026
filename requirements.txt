@@ -1,0 +1,12 @@
+docling>=2.100.0            
+langchain>=0.1.0           
+langdetect>=1.0.9           
+ 
+
+langchain-community>=0.3.0  
+sentence-transformers>=2.7.0 
+faiss-cpu>=1.8.0            
+
+langchain-ollama>=0.3.0     
+ollama>=0.3.0               
+streamlit>=1.35.0 
