@@ -1,0 +1,12 @@
+docling>=2.100.0            # IBM Docling: PDF/DOCX/PPTX/HTML extraction
+langchain>=0.1.0            # Text splitters
+langdetect>=1.0.9           # Offline language detection
+
+
+langchain-community>=0.3.0  # FAISS vectorstore + HuggingFace embeddings
+sentence-transformers>=2.7.0 # all-MiniLM-L6-v2 (~80MB, offline)
+faiss-cpu>=1.8.0           
+
+langchain-ollama>=0.3.0     # Ollama LLM integration for LangChain
+ollama>=0.3.0               # Ollama Python client
+streamlit>=1.35.0           # Web UI
