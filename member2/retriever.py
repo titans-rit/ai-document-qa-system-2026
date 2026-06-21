@@ -2,8 +2,7 @@ import os
 import json
 import faiss
 import numpy as np
-from embeddings import SentenceTransformerEmbeddings
-
+from member2.embeddings import SentenceTransformerEmbeddings
 
 def retrieve(query: str, index_path: str = "faiss_index", k: int = 3):
 

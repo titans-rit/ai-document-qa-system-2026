@@ -6,6 +6,11 @@ This is a STANDALONE demo. The retrieve_chunks() function below is a
 placeholder — once Member 2 builds the real embedding + FAISS/Chroma
 retrieval pipeline, swap it in here without touching anything else.
 """
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 
 import streamlit as st
 import ollama
