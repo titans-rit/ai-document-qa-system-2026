@@ -13,7 +13,6 @@ from docling.datamodel.base_models import InputFormat
 from docling.datamodel.pipeline_options import PdfPipelineOptions
 
 # ── LangChain splitters ───────────────────────────────────────────────────────
-# OLD — remove this
 from langchain_text_splitters import (
     RecursiveCharacterTextSplitter,
     MarkdownHeaderTextSplitter,
@@ -288,33 +287,42 @@ def chunk_all_extractions(extractions: list[dict]) -> list[Document]:
 
 # ══════════════════════════════════════════════════════════════════════════════
 #  SAVE  (handoff to Member 2)
+#
+#  ✅ CHANGED: simplified output — plain list of {text, page, source_file}
+#     Member 2 only needs these three fields to build the vector store.
+#     All internal processing metadata stays internal to Member 1.
 # ══════════════════════════════════════════════════════════════════════════════
 
 def save_chunks_json(documents: list[Document], path: str = CHUNKS_JSON_PATH) -> None:
-    """Persist chunks as JSON for Member 2's embedding pipeline."""
-    Path(path).parent.mkdir(parents=True, exist_ok=True)
-    payload = {
-        "summary": {
-            "total_chunks":  len(documents),
-            "generated_at":  datetime.now().isoformat(),
-            "doc_type_counts": _count_types(documents),
+    """
+    Persist chunks as JSON for Member 2's embedding pipeline.
+
+    Output format (simplified — agreed team contract):
+    [
+        {
+            "text":        "chunk text content ...",
+            "page":        10,
+            "source_file": "user_guide.pdf"
         },
-        "chunks": [
-            {"text": d.page_content, "metadata": d.metadata}
-            for d in documents
-        ],
-    }
+        ...
+    ]
+    """
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+
+    # ── CHANGED: flat list only — no "summary" wrapper, no internal metadata ──
+    payload = [
+        {
+            "text":        d.page_content,
+            "page":        d.metadata.get("chunk_index", 0),
+            "source_file": d.metadata.get("source", ""),
+        }
+        for d in documents
+    ]
+
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
-    log.info(f"Chunks saved → {path}")
 
-
-def _count_types(docs: list[Document]) -> dict:
-    counts: dict = {}
-    for d in docs:
-        k = d.metadata.get("doc_type", "unknown")
-        counts[k] = counts.get(k, 0) + 1
-    return counts
+    log.info(f"Chunks saved → {path}  ({len(payload)} chunks)")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
