@@ -1,0 +1,47 @@
+[
+  {
+    "text": "## Router and Switch Configuration Reference  \nSample document for testing PDF upload and Q&amp;A; retrieval.",
+    "page": 0,
+    "source_file": "Networking_User_Guide.pdf"
+  },
+  {
+    "text": "## Chapter 1: Introduction  \nThis guide covers the configuration and operation of common routing protocols used on enterprise network devices, including OSPF, BGP, and static routing. It is intended for network administrators configuring routers and Layer 3 switches.  \nEach section describes default timer values, configuration commands, and recommended practices for production deployments.",
+    "page": 1,
+    "source_file": "Networking_User_Guide.pdf"
+  },
+  {
+    "text": "## Chapter 2: VLAN Configuration  \nVirtual Local Area Networks (VLANs) allow a single physical switch to be logically segmented into multiple broadcast domains. VLANs are identified by a VLAN ID ranging from 1 to 4094.  \nTrunk ports carry traffic for multiple VLANs using 802.1Q tagging. Access ports carry traffic for a single VLAN and are typically used to connect end-user devices.",
+    "page": 2,
+    "source_file": "Networking_User_Guide.pdf"
+  },
+  {
+    "text": "## Chapter 3: OSPF Configuration  \nOpen Shortest Path First (OSPF) is a link-state routing protocol used within a single autonomous system. Routers running OSPF exchange Hello packets to discover and maintain neighbor relationships.",
+    "page": 3,
+    "source_file": "Networking_User_Guide.pdf"
+  },
+  {
+    "text": "## 3.1 Hello and Dead Intervals  \nThe Hello interval determines how often a router sends Hello packets on an OSPF-enabled interface. The Dead interval determines how long a router waits without receiving a Hello packet before declaring a neighbor down. By default, the Dead interval is four times the Hello interval.  \n| Network type | Default Hello interval | Default Dead interval |\n|-----------------------------------|--------------------------|-------------------------|\n| Broadcast (e.g. Ethernet) | 10 seconds | 40 seconds |\n| Point-to-point | 10 seconds | 40 seconds |",
+    "page": 4,
+    "source_file": "Networking_User_Guide.pdf"
+  },
+  {
+    "text": "| Point-to-point | 10 seconds | 40 seconds |\n| Non-broadcast multi-access (NBMA) | 30 seconds | 120 seconds |  \nHello and Dead intervals must match between two neighboring routers for an adjacency to form.  \nMismatched timers are a common cause of OSPF neighbor relationships failing to establish.",
+    "page": 5,
+    "source_file": "Networking_User_Guide.pdf"
+  },
+  {
+    "text": "## 3.2 Configuring Custom Timers  \nTo change the Hello interval on an interface, use the following command in interface configuration mode:  \n```\nrouter(config-if)# ip ospf hello-interval 5\n```  \nLowering the Hello interval can speed up failure detection but increases control-plane traffic. Most deployments retain the default values unless fast convergence is specifically required.",
+    "page": 6,
+    "source_file": "Networking_User_Guide.pdf"
+  },
+  {
+    "text": "## Chapter 4: BGP Overview  \nBorder Gateway Protocol (BGP) is the routing protocol used between autonomous systems on the internet. Unlike OSPF, BGP uses a path-vector approach and relies on TCP for reliable transport between peers.  \nBGP keepalive messages are sent every 60 seconds by default, with a hold time of 180 seconds.",
+    "page": 7,
+    "source_file": "Networking_User_Guide.pdf"
+  },
+  {
+    "text": "[TABLE 1]\n Network type Default Hello interval Default Dead interval\n Broadcast (e.g. Ethernet) 10 seconds 40 seconds\n Point-to-point 10 seconds 40 seconds\nNon-broadcast multi-access (NBMA) 30 seconds 120 seconds",
+    "page": 8,
+    "source_file": "Networking_User_Guide.pdf"
+  }
+]

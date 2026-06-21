@@ -33,6 +33,7 @@ EMBEDDING_DEVICE = "cpu"          # change to "cuda" if GPU available
 
 # ── FAISS retrieval ───────────────────────────────────────────────────────────
 TOP_K_RESULTS = 5                 # number of chunks to retrieve per query
+MIN_SIMILARITY = 0.25            # minimum cosine similarity to consider a chunk relevant (0-1)
 
 # ── Ollama / LLM ─────────────────────────────────────────────────────────────
 OLLAMA_MODEL    = "llama3"
@@ -43,13 +44,13 @@ LLM_CONTEXT_WINDOW = 4096
 # ── RAG Prompt ────────────────────────────────────────────────────────────────
 RAG_PROMPT_TEMPLATE = """You are an expert technical assistant for enterprise documents.
 Use ONLY the context provided below to answer the question accurately.
-If the answer is not found in the context, respond with:
-"I could not find this information in the provided documents."
-Always cite the source document name and section in your answer.
+If the answer is not found in the context, respond with the exact phrase:
+"I couldn't find this in the uploaded documents."
+Always cite the source document name and page number in your answer.
 
 Context:
 {context}
 
 Question: {question}
 
-Answer (include source document and section):"""
+Answer (include source file and page number):"""
