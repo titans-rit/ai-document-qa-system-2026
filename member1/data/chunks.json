@@ -1,0 +1,1826 @@
+{
+  "summary": {
+    "total_chunks": 121,
+    "generated_at": "2026-06-19T16:32:20.647670",
+    "doc_type_counts": {
+      "unknown": 121
+    }
+  },
+  "chunks": [
+    {
+      "text": "## DocLayNet: A Large Human-Annotated Dataset for Document-Layout Analysis  \nBirgit Pfitzmann IBM Research Rueschlikon, Switzerland bpf@zurich.ibm.com Christoph Auer IBM Research Rueschlikon, Switzerland cau@zurich.ibm.com  \nAhmed S. Nassar IBM Research  \nRueschlikon, Switzerland ahn@zurich.ibm.com Michele Dolfi IBM Research Rueschlikon, Switzerland dol@zurich.ibm.com Peter Staar IBM Research Rueschlikon, Switzerland taa@zurich.ibm.com",
+      "metadata": {
+        "chunk_id": "b79a1e04d831e0",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "DocLayNet: A Large Human-Annotated Dataset for Document-Layout Analysis",
+        "language": "de",
+        "chunk_index": 0,
+        "word_count": 45,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Figure 1: Four examples of complex page layouts across different document categories  \n<!-- image -->",
+      "metadata": {
+        "chunk_id": "a6dd62e7762cbf",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "DocLayNet: A Large Human-Annotated Dataset for Document-Layout Analysis",
+        "language": "fr",
+        "chunk_index": 1,
+        "word_count": 15,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "## KEYWORDS  \nPDF document conversion, layout segmentation, object-detection, data set, Machine Learning",
+      "metadata": {
+        "chunk_id": "18422ba005f37e",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "KEYWORDS",
+        "language": "fr",
+        "chunk_index": 2,
+        "word_count": 12,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "## ACMReference Format:  \nBirgit Pfitzmann, Christoph Auer, Michele Dolfi, Ahmed S. Nassar, and Peter Staar. 2022. DocLayNet: A Large Human-Annotated Dataset for DocumentLayout Analysis. In Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '22), August 14-18, 2022, Washington, DC, USA. ACM, New York, NY, USA, 9 pages. https://doi.org/10.1145/ 3534678.3539043",
+      "metadata": {
+        "chunk_id": "c30906c78e0de2",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "ACMReference Format:",
+        "language": "en",
+        "chunk_index": 3,
+        "word_count": 55,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Accurate document layout analysis is a key requirement for highquality PDF document conversion. With the recent availability of public, large ground-truth datasets such as PubLayNet and DocBank, deep-learning models have proven to be very effective at layout detection and segmentation. While these datasets are of adequate size to train such models, they severely lack in layout variability since they are sourced from scientific article repositories such as PubMed and arXiv only",
+      "metadata": {
+        "chunk_id": "c63b76e508a911",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "ABSTRACT",
+        "language": "en",
+        "chunk_index": 4,
+        "word_count": 71,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Consequently, the accuracy of the layout segmentation drops significantly when these models are applied on more challenging and diverse layouts. In this paper, we present DocLayNet , a new, publicly available, document-layout annotation dataset in COCO format. It contains 80863 manually annotated pages from diverse data sources to represent a wide variability in layouts. For each PDF page, the layout annotations provide labelled bounding-boxes with a choice of 11 distinct classes",
+      "metadata": {
+        "chunk_id": "dc38af64f1fef6",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "ABSTRACT",
+        "language": "en",
+        "chunk_index": 5,
+        "word_count": 72,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". DocLayNet also provides a subset of double- and triple-annotated pages to determine the inter-annotator agreement. In multiple experiments, we provide baseline accuracy scores (in mAP) for a set of popular object detection models. We also demonstrate that these models fall approximately 10% behind the inter-annotator agreement. Furthermore, we provide evidence that DocLayNet is of sufficient size",
+      "metadata": {
+        "chunk_id": "58e1f96d65a71a",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "ABSTRACT",
+        "language": "en",
+        "chunk_index": 6,
+        "word_count": 57,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Lastly, we compare models trained on PubLayNet, DocBank and DocLayNet, showing that layout predictions of the DocLayNettrained models are more robust and thus the preferred choice for general-purpose document-layout analysis.",
+      "metadata": {
+        "chunk_id": "5b6616bdd3973e",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "ABSTRACT",
+        "language": "en",
+        "chunk_index": 7,
+        "word_count": 31,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "## CCS CONCEPTS  \n· Informationsystems → Documentstructure ; · Appliedcomputing → Document analysis ; · Computing methodologies → Machine learning ; Computer vision ; Object detection ;",
+      "metadata": {
+        "chunk_id": "2e58021c81bf37",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "CCS CONCEPTS",
+        "language": "en",
+        "chunk_index": 8,
+        "word_count": 27,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Permission to make digital or hard copies of part or all of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for third-party components of this work must be honored. For all other uses, contact the owner/author(s).  \nKDD '22, August 14-18, 2022, Washington, DC, USA  \nACM ISBN 978-1-4503-9385-0/22/08.",
+      "metadata": {
+        "chunk_id": "50f64cead4f8b9",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "CCS CONCEPTS",
+        "language": "en",
+        "chunk_index": 9,
+        "word_count": 78,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "ACM ISBN 978-1-4503-9385-0/22/08.  \nhttps://doi.org/10.1145/3534678.3539043  \nKDD '22, August 14-18, 2022, Washington, DC, USA Birgit Pfitzmann, Christoph Auer, Michele Dolfi, Ahmed S. Nassar, and Peter Staar",
+      "metadata": {
+        "chunk_id": "c1e2a05af1f028",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "CCS CONCEPTS",
+        "language": "de",
+        "chunk_index": 10,
+        "word_count": 24,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Despite the substantial improvements achieved with machine-learning (ML) approaches and deep neural networks in recent years, document conversion remains a challenging problem, as demonstrated by the numerous public competitions held on this topic [1-4]. The challenge originates from the huge variability in PDF documents regarding layout, language and formats (scanned, programmatic or a combination of both)",
+      "metadata": {
+        "chunk_id": "03250b5dd62153",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 11,
+        "word_count": 56,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Engineering a single ML model that can be applied on all types of documents and provides high-quality layout segmentation remains to this day extremely challenging [5]. To highlight the variability in document layouts, we show a few example documents from the DocLayNet dataset in Figure 1.",
+      "metadata": {
+        "chunk_id": "dfd02160fb8959",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 12,
+        "word_count": 47,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Akeyproblem in the process of document conversion is to understand the structure of a single document page, i.e. which segments of text should be grouped together in a unit. To train models for this task, there are currently two large datasets available to the community, PubLayNet [6] and DocBank [7]. They were introduced in 2019 and 2020 respectively and significantly accelerated the implementation of layout detection and segmentation models due to their sizes of 300K and 500K ground-truth pages",
+      "metadata": {
+        "chunk_id": "e62f9e45f588e1",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 13,
+        "word_count": 79,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". These sizes were achieved by leveraging an automation approach. The benefit of automated ground-truth generation is obvious: one can generate large ground-truth datasets at virtually no cost. However, the automation introduces a constraint on the variability in the dataset, because corresponding structured source data must be available. PubLayNet and DocBank were both generated from scientific document repositories (PubMed and arXiv), which provide XML or L A T E X sources",
+      "metadata": {
+        "chunk_id": "0a7d03b72d09bc",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 14,
+        "word_count": 71,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Those scientific documents present a limited variability in their layouts, because they are typeset in uniform templates provided by the publishers. Obviously, documents such as technical manuals, annual company reports, legal text, government tenders, etc. have very different and partially unique layouts. As a consequence, the layout predictions obtained from models trained on PubLayNet or DocBank is very reasonable when applied on scientific documents",
+      "metadata": {
+        "chunk_id": "cf2e0e7c5a8eec",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 15,
+        "word_count": 65,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". However, for more artistic or free-style layouts, we see sub-par prediction quality from these models, which we demonstrate in Section 5.",
+      "metadata": {
+        "chunk_id": "1e3c740e0e1f15",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 16,
+        "word_count": 22,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "In this paper, we present the DocLayNet dataset. It provides pageby-page layout annotation ground-truth using bounding-boxes for 11 distinct class labels on 80863 unique document pages, of which a fraction carry double- or triple-annotations. DocLayNet is similar in spirit to PubLayNet and DocBank and will likewise be made available to the public 1 in order to stimulate the document-layout analysis community. It distinguishes itself in the following aspects:",
+      "metadata": {
+        "chunk_id": "b5f2a028d9731e",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 17,
+        "word_count": 68,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- (1) Human Annotation : In contrast to PubLayNet and DocBank, we relied on human annotation instead of automation approaches to generate the data set.\n- (2) Large Layout Variability : We include diverse and complex layouts from a large variety of public sources.\n- (3) Detailed Label Set : We define 11 class labels to distinguish layout features in high detail. PubLayNet provides 5 labels; DocBank provides 13, although not a superset of ours.",
+      "metadata": {
+        "chunk_id": "411404ebe2b032",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 18,
+        "word_count": 75,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- (4) Redundant Annotations : A fraction of the pages in the DocLayNet data set carry more than one human annotation.  \n[1 https://developer.ibm.com/exchanges/data/all/doclaynet](https://developer.ibm.com/exchanges/data/all/doclaynet)  \nThis enables experimentation with annotation uncertainty and quality control analysis.",
+      "metadata": {
+        "chunk_id": "537e1804465be0",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 19,
+        "word_count": 33,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- (5) Pre-defined Train-, Test- &amp; Validation-set : Like DocBank, we provide fixed train-, test- &amp; validation-sets to ensure proportional representation of the class-labels. Further, we prevent leakage of unique layouts across sets, which has a large effect on model accuracy scores.",
+      "metadata": {
+        "chunk_id": "c4efe707e32c30",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 20,
+        "word_count": 42,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "All aspects outlined above are detailed in Section 3. In Section 4, we will elaborate on how we designed and executed this large-scale human annotation campaign. We will also share key insights and lessons learned that might prove helpful for other parties planning to set up annotation campaigns.",
+      "metadata": {
+        "chunk_id": "685ac364fde227",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 21,
+        "word_count": 48,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "In Section 5, we will present baseline accuracy numbers for a variety of object detection methods (Faster R-CNN, Mask R-CNN and YOLOv5) trained on DocLayNet. We further show how the model performance is impacted by varying the DocLayNet dataset size, reducing the label set and modifying the train/test-split. Last but not least, we compare the performance of models trained on PubLayNet, DocBank and DocLayNet and demonstrate that a model trained on DocLayNet provides overall more robust layout recovery.",
+      "metadata": {
+        "chunk_id": "364a234bb2e8d3",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "1 INTRODUCTION",
+        "language": "en",
+        "chunk_index": 22,
+        "word_count": 78,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "While early approaches in document-layout analysis used rulebased algorithms and heuristics [8], the problem is lately addressed with deep learning methods. The most common approach is to leverage object detection models [9-15]. In the last decade, the accuracy and speed of these models has increased dramatically",
+      "metadata": {
+        "chunk_id": "8886185e6d5c87",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "2 RELATED WORK",
+        "language": "en",
+        "chunk_index": 23,
+        "word_count": 46,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Furthermore, most state-of-the-art object detection methods can be trained and applied with very little work, thanks to a standardisation effort of the ground-truth data format [16] and common deep-learning frameworks [17]. Reference data sets such as PubLayNet [6] and DocBank provide their data in the commonly accepted COCO format [16].",
+      "metadata": {
+        "chunk_id": "b79430cc20ad41",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "2 RELATED WORK",
+        "language": "en",
+        "chunk_index": 24,
+        "word_count": 51,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Lately, new types of ML models for document-layout analysis have emerged in the community [18-21]. These models do not approach the problem of layout analysis purely based on an image representation of the page, as computer vision methods do. Instead, they combine the text tokens and image representation of a page in order to obtain a segmentation. While the reported accuracies appear to be promising, a broadly accepted data format which links geometric and textual features has yet to establish.",
+      "metadata": {
+        "chunk_id": "43e1a9327da05d",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "2 RELATED WORK",
+        "language": "en",
+        "chunk_index": 25,
+        "word_count": 80,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "DocLayNet contains 80863 PDF pages. Among these, 7059 carry two instances of human annotations, and 1591 carry three. This amounts to 91104 total annotation instances. The annotations provide layout information in the shape of labeled, rectangular boundingboxes. We define 11 distinct labels for layout features, namely Caption , Footnote , Formula , List-item , Page-footer , Page-header , Picture , Section-header , Table , Text , and Title",
+      "metadata": {
+        "chunk_id": "29b13c7f45b346",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 26,
+        "word_count": 68,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Our reasoning for picking this particular label set is detailed in Section 4.",
+      "metadata": {
+        "chunk_id": "70d912fe4c4a71",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 27,
+        "word_count": 14,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "In addition to open intellectual property constraints for the source documents, we required that the documents in DocLayNet adhere to a few conditions. Firstly, we kept scanned documents to a minimum, since they introduce difficulties in annotation (see Section 4). As a second condition, we focussed on medium to large documents ( &gt; 10 pages) with technical content, dense in complex tables, figures, plots and captions",
+      "metadata": {
+        "chunk_id": "be598779337f70",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 28,
+        "word_count": 66,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Such documents carry a lot of information value, but are often hard to analyse with high accuracy due to their challenging layouts. Counterexamples of documents not included in the dataset are receipts, invoices, hand-written documents or photographs showing 'text in the wild\".",
+      "metadata": {
+        "chunk_id": "e346efee8c6bac",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 29,
+        "word_count": 43,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Figure 2: Distribution of DocLayNet pages across document categories.  \n<!-- image -->",
+      "metadata": {
+        "chunk_id": "e42e1a0c5e6ac8",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 30,
+        "word_count": 12,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "The pages in DocLayNet can be grouped into six distinct categories, namely Financial Reports , Manuals , Scientific Articles , Laws &amp; Regulations , Patents and Government Tenders . Each document category was sourced from various repositories. For example, Financial Reports contain both free-style format annual reports 2 which expose company-specific, artistic layouts as well as the more formal SEC filings",
+      "metadata": {
+        "chunk_id": "ed70ffbd416f53",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 31,
+        "word_count": 61,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". The two largest categories ( Financial Reports and Manuals ) contain a large amount of free-style layouts in order to obtain maximum variability. In the other four categories, we boosted the variability by mixing documents from independent providers, such as different government websites or publishers. In Figure 2, we show the document categories contained in DocLayNet with their respective sizes.",
+      "metadata": {
+        "chunk_id": "f1f1709702ddd4",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 32,
+        "word_count": 61,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "We did not control the document selection with regard to language. The vast majority of documents contained in DocLayNet (close to 95%) are published in English language. However, DocLayNet also contains a number of documents in other languages such as German (2.5%), French (1.0%) and Japanese (1.0%)",
+      "metadata": {
+        "chunk_id": "6187bb7d39cef2",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 33,
+        "word_count": 47,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". While the document language has negligible impact on the performance of computer vision methods such as object detection and segmentation models, it might prove challenging for layout analysis methods which exploit textual features.",
+      "metadata": {
+        "chunk_id": "4a16846921f213",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 34,
+        "word_count": 34,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "To ensure that future benchmarks in the document-layout analysis community can be easily compared, we have split up DocLayNet into pre-defined train-, test- and validation-sets. In this way, we can avoid spurious variations in the evaluation scores due to random splitting in train-, test- and validation-sets. We also ensured that less frequent labels are represented in train and test sets in equal proportions.  \n2 e.g. AAPL from https://www.annualreports.com/",
+      "metadata": {
+        "chunk_id": "87c7105739ed19",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 35,
+        "word_count": 68,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "2 e.g. AAPL from https://www.annualreports.com/  \nTable 1 shows the overall frequency and distribution of the labels among the different sets. Importantly, we ensure that subsets are only split on full-document boundaries. This avoids that pages of the same document are spread over train, test and validation set, which can give an undesired evaluation advantage to models and lead to overestimation of their prediction accuracy. We will show the impact of this decision in Section 5.",
+      "metadata": {
+        "chunk_id": "8e1ae6c866ebc3",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 36,
+        "word_count": 75,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "In order to accommodate the different types of models currently in use by the community, we provide DocLayNet in an augmented COCO format [16]. This entails the standard COCO ground-truth file (in JSON format) with the associated page images (in PNG format, 1025 × 1025 pixels). Furthermore, custom fields have been added to each COCO record to specify document category, original document filename and page number",
+      "metadata": {
+        "chunk_id": "7355eeb92c728f",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 37,
+        "word_count": 66,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". In addition, we also provide the original PDF pages, as well as sidecar files containing parsed PDF text and text-cell coordinates (in JSON). All additional files are linked to the primary page images by their matching filenames.",
+      "metadata": {
+        "chunk_id": "bee75fded4910a",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 38,
+        "word_count": 38,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Despite being cost-intense and far less scalable than automation, human annotation has several benefits over automated groundtruth generation. The first and most obvious reason to leverage human annotations is the freedom to annotate any type of document without requiring a programmatic source. For most PDF documents, the original source document is not available. The latter is not a hard constraint with human annotation, but it is for automated methods",
+      "metadata": {
+        "chunk_id": "31d48340036605",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 39,
+        "word_count": 69,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". A second reason to use human annotations is that the latter usually provide a more natural interpretation of the page layout. The human-interpreted layout can significantly deviate from the programmatic layout used in typesetting. For example, 'invisible' tables might be used solely for aligning text paragraphs on columns. Such typesetting tricks might be interpreted by automated methods incorrectly as an actual table, while the human annotation will interpret it correctly as Text or other styles",
+      "metadata": {
+        "chunk_id": "cc1694a324f804",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 40,
+        "word_count": 76,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". The same applies to multi-line text elements, when authors decided to space them as 'invisible' list elements without bullet symbols. A third reason to gather ground-truth through human annotation is to estimate a 'natural' upper bound on the segmentation accuracy. As we will show in Section 4, certain documents featuring complex layouts can have different but equally acceptable layout interpretations",
+      "metadata": {
+        "chunk_id": "e518212de4f5bb",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 41,
+        "word_count": 61,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". This natural upper bound for segmentation accuracy can be found by annotating the same pages multiple times by different people and evaluating the inter-annotator agreement. Such a baseline consistency evaluation is very useful to define expectations for a good target accuracy in trained deep neural network models and avoid overfitting (see Table 1). On the flip side, achieving high annotation consistency proved to be a key challenge in human annotation, as we outline in Section 4.",
+      "metadata": {
+        "chunk_id": "a1395a8aebd80f",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "3 THE DOCLAYNET DATASET",
+        "language": "en",
+        "chunk_index": 42,
+        "word_count": 77,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "The annotation campaign was carried out in four phases. In phase one, we identified and prepared the data sources for annotation. In phase two, we determined the class labels and how annotations should be done on the documents in order to obtain maximum consistency. The latter was guided by a detailed requirement analysis and exhaustive experiments. In phase three, we trained the annotation staff and performed exams for quality assurance",
+      "metadata": {
+        "chunk_id": "7bed3c75cff418",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 43,
+        "word_count": 70,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". In phase four, we distributed the annotation workload and performed continuous quality controls. Phase one and two required a small team of experts only. For phases three and four, a group of 40 dedicated annotators were assembled and supervised.",
+      "metadata": {
+        "chunk_id": "ab066d7088158d",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 44,
+        "word_count": 40,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Table 1: DocLayNet dataset overview. Along with the frequency of each class label, we present the relative occurrence (as % of row 'Total') in the train, test and validation sets. The inter-annotator agreement is computed as the mAP@0.5-0.95 metric between pairwise annotations from the triple-annotated pages, from which we obtain accuracy ranges.",
+      "metadata": {
+        "chunk_id": "cff0d9432d92bd",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 45,
+        "word_count": 52,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| | | % of Total | % of Total | % of Total | triple inter-annotator mAP @0.5-0.95 (%) | triple inter-annotator mAP @0.5-0.95 (%) | triple inter-annotator mAP @0.5-0.95 (%) | triple inter-annotator mAP @0.5-0.95 (%) | triple inter-annotator mAP @0.5-0.95 (%) | triple inter-annotator mAP @0.5-0.95 (%) | triple inter-annotator mAP @0.5-0.95 (%) |",
+      "metadata": {
+        "chunk_id": "b2a6d8762fdc57",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 46,
+        "word_count": 57,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "|----------------|---------|--------------|--------------|--------------|--------------------------------------------|--------------------------------------------|--------------------------------------------|--------------------------------------------|--------------------------------------------|--------------------------------------------|--------------------------------------------|\n| class label | Count | Train | Test | Val | All | Fin | Man | Sci | Law | Pat | Ten |",
+      "metadata": {
+        "chunk_id": "56da2c2f29d2ee",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 47,
+        "word_count": 27,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| Caption | 22524 | 2.04 | 1.77 | 2.32 | 84-89 | 40-61 | 86-92 | 94-99 | 95-99 | 69-78 | n/a |\n| Footnote | 6318 | 0.60 | 0.31 | 0.58 | 83-91 | n/a | 100 | 62-88 | 85-94 | n/a | 82-97 |\n| Formula | 25027 | 2.25 | 1.90 | 2.96 | 83-85 | n/a | n/a | 84-87 | 86-96 | n/a | n/a |\n| List-item | 185660 | 17.19 | 13.34 | 15.82 | 87-88 | 74-83 | 90-92 | 97-97 | 81-85 | 75-88 | 93-95 |\n| Page-footer | 70878 | 6.51 | 5.58 | 6.00 | 93-94 | 88-90 | 95-96 | 100 | 92-97 | 100 | 96-98 |",
+      "metadata": {
+        "chunk_id": "2ae6ffd24d7dfd",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 48,
+        "word_count": 125,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| Page-header | 58022 | 5.10 | 6.70 | 5.06 | 85-89 | 66-76 | 90-94 | 98-100 | 91-92 | 97-99 | 81-86 |\n| Picture | 45976 | 4.21 | 2.78 | 5.31 | 69-71 | 56-59 | 82-86 | 69-82 | 80-95 | 66-71 | 59-76 |\n| Section-header | 142884 | 12.60 | 15.77 | 12.85 | 83-84 | 76-81 | 90-92 | 94-95 | 87-94 | 69-73 | 78-86 |\n| Table | 34733 | 3.20 | 2.27 | 3.60 | 77-81 | 75-80 | 83-86 | 98-99 | 58-80 | 79-84 | 70-85 |\n| Text | 510377 | 45.82 | 49.28 | 45.00 | 84-86 | 81-86 | 88-93 | 89-93 | 87-92 | 71-79 | 87-95 |",
+      "metadata": {
+        "chunk_id": "8cf2b0458d83d0",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 49,
+        "word_count": 125,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| Title | 5071 | 0.47 | 0.30 | 0.50 | 60-72 | 24-63 | 50-63 | 94-100 | 82-96 | 68-79 | 24-56 |\n| Total | 1107470 | 941123 | 99816 | 66531 | 82-83 | 71-74 | 79-81 | 89-94 | 86-91 | 71-76 | 68-85 |  \nFigure 3: Corpus Conversion Service annotation user interface. The PDF page is shown in the background, with overlaid text-cells (in darker shades). The annotation boxes can be drawn by dragging a rectangle over each segment with the respective label from the palette on the right.  \n<!-- image -->",
+      "metadata": {
+        "chunk_id": "39f6e22de66f2b",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 50,
+        "word_count": 98,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Phase 1: Data selection and preparation. Our inclusion criteria for documents were described in Section 3. A large effort went into ensuring that all documents are free to use. The data sources include publication repositories such as arXiv 3 , government offices, company websites as well as data directory services for financial reports and patents. Scanned documents were excluded wherever possible because they can be rotated or skewed",
+      "metadata": {
+        "chunk_id": "2ee0a8f17cd3a0",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 51,
+        "word_count": 68,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". This would not allow us to perform annotation with rectangular bounding-boxes and therefore complicate the annotation process.",
+      "metadata": {
+        "chunk_id": "6b2cb742f53314",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 52,
+        "word_count": 18,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Preparation work included uploading and parsing the sourced PDF documents in the Corpus Conversion Service (CCS) [22], a cloud-native platform which provides a visual annotation interface and allows for dataset inspection and analysis. The annotation interface of CCS is shown in Figure 3. The desired balance of pages between the different document categories was achieved by selective subsampling of pages with certain desired properties",
+      "metadata": {
+        "chunk_id": "51aae7dedb846f",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 53,
+        "word_count": 64,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". For example, we made sure to include the title page of each document and bias the remaining page selection to those with figures or tables. The latter was achieved by leveraging pre-trained object detection models from PubLayNet, which helped us estimate how many figures and tables a given page contains.",
+      "metadata": {
+        "chunk_id": "35e6004a14d690",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 54,
+        "word_count": 51,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Phase 2: Label selection and guideline. We reviewed the collected documents and identified the most common structural features they exhibit. This was achieved by identifying recurrent layout elements and lead us to the definition of 11 distinct class labels. These 11 class labels are Caption , Footnote , Formula , List-item , Pagefooter , Page-header , Picture , Section-header , Table , Text , and Title",
+      "metadata": {
+        "chunk_id": "f393e977b466e8",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 55,
+        "word_count": 66,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Critical factors that were considered for the choice of these class labels were (1) the overall occurrence of the label, (2) the specificity of the label, (3) recognisability on a single page (i.e. no need for context from previous or next page) and (4) overall coverage of the page. Specificity ensures that the choice of label is not ambiguous, while coverage ensures that all meaningful items on a page can be annotated",
+      "metadata": {
+        "chunk_id": "c2ca57923ebac8",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 56,
+        "word_count": 73,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". We refrained from class labels that are very specific to a document category, such as Abstract in the Scientific Articles category. We also avoided class labels that are tightly linked to the semantics of the text. Labels such as Author and Affiliation , as seen in DocBank, are often only distinguishable by discriminating on the textual content of an element, which goes beyond visual layout recognition, in particular outside the Scientific Articles category.",
+      "metadata": {
+        "chunk_id": "d49f5002d5db2c",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 57,
+        "word_count": 74,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "At first sight, the task of visual document-layout interpretation appears intuitive enough to obtain plausible annotations in most cases. However, during early trial-runs in the core team, we observed many cases in which annotators use different annotation styles, especially for documents with challenging layouts. For example, if a figure is presented with subfigures, one annotator might draw a single figure bounding-box, while another might annotate each subfigure separately",
+      "metadata": {
+        "chunk_id": "7889799b5a6764",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 58,
+        "word_count": 68,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". The same applies for lists, where one might annotate all list items in one block or each list item separately. In essence, we observed that challenging layouts would be annotated in different but plausible ways. To illustrate this, we show in Figure 4 multiple examples of plausible but inconsistent annotations on the same pages.",
+      "metadata": {
+        "chunk_id": "32df9bee4f991c",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 59,
+        "word_count": 55,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Obviously, this inconsistency in annotations is not desirable for datasets which are intended to be used for model training. To minimise these inconsistencies, we created a detailed annotation guideline. While perfect consistency across 40 annotation staff members is clearly not possible to achieve, we saw a huge improvement in annotation consistency after the introduction of our annotation guideline. A few selected, non-trivial highlights of the guideline are:",
+      "metadata": {
+        "chunk_id": "58a9f1b903c2c0",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 60,
+        "word_count": 67,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- (1) Every list-item is an individual object instance with class label List-item . This definition is different from PubLayNet and DocBank, where all list-items are grouped together into one List object.\n- (2) A List-item is a paragraph with hanging indentation. Singleline elements can qualify as List-item if the neighbour elements expose hanging indentation. Bullet or enumeration symbols are not a requirement.\n- (3) For every Caption , there must be exactly one corresponding Picture or Table .",
+      "metadata": {
+        "chunk_id": "826066a7c7ca72",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 61,
+        "word_count": 79,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- (4) Connected sub-pictures are grouped together in one Picture object.\n- (5) Formula numbers are included in a Formula object.\n- (6) Emphasised text (e.g. in italic or bold) at the beginning of a paragraph is not considered a Section-header , unless it appears exclusively on its own line.",
+      "metadata": {
+        "chunk_id": "5e8664000f1737",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 62,
+        "word_count": 50,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "The complete annotation guideline is over 100 pages long and a detailed description is obviously out of scope for this paper. Nevertheless, it will be made publicly available alongside with DocLayNet for future reference.",
+      "metadata": {
+        "chunk_id": "3e14c5689d6f90",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 63,
+        "word_count": 34,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Phase 3: Training. After a first trial with a small group of people, we realised that providing the annotation guideline and a set of random practice pages did not yield the desired quality level for layout annotation. Therefore we prepared a subset of pages with two different complexity levels, each with a practice and an exam part. 974 pages were reference-annotated by one proficient core team member. Annotation staff were then given the task to annotate the same subsets (blinded from the reference)",
+      "metadata": {
+        "chunk_id": "63118b38d91746",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 64,
+        "word_count": 83,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". By comparing the annotations of each staff member with the reference annotations, we could quantify how closely their annotations matched the reference. Only after passing two exam levels with high annotation quality, staff were admitted into the production phase. Practice iterations",
+      "metadata": {
+        "chunk_id": "b41d2ab99a7256",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 65,
+        "word_count": 42,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "<!-- image -->  \n05237a14f2524e3f53c8454b074409d05078038a6a36b770fcc8ec7e540deae0  \nFigure 4: Examples of plausible annotation alternatives for the same page. Criteria in our annotation guideline can resolve cases A to C, while the case D remains ambiguous.  \nwere carried out over a timeframe of 12 weeks, after which 8 of the 40 initially allocated annotators did not pass the bar.",
+      "metadata": {
+        "chunk_id": "2aa55286cad9dc",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 66,
+        "word_count": 55,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Phase 4: Production annotation. The previously selected 80K pages were annotated with the defined 11 class labels by 32 annotators. This production phase took around three months to complete. All annotations were created online through CCS, which visualises the programmatic PDF text-cells as an overlay on the page. The page annotation are obtained by drawing rectangular bounding-boxes, as shown in Figure 3",
+      "metadata": {
+        "chunk_id": "248956efa76b7c",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 67,
+        "word_count": 62,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". With regard to the annotation practices, we implemented a few constraints and capabilities on the tooling level. First, we only allow non-overlapping, vertically oriented, rectangular boxes. For the large majority of documents, this constraint was sufficient and it speeds up the annotation considerably in comparison with arbitrary segmentation shapes. Second, annotator staff were not able to see each other's annotations",
+      "metadata": {
+        "chunk_id": "d10ce46b1b18df",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 68,
+        "word_count": 61,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". This was enforced by design to avoid any bias in the annotation, which could skew the numbers of the inter-annotator agreement (see Table 1). We wanted to avoid this at any cost in order to have clear, unbiased baseline numbers for human document-layout annotation. Third, we introduced the feature of snapping boxes around text segments to obtain a pixel-accurate annotation and again reduce time and effort",
+      "metadata": {
+        "chunk_id": "1ee9f3b65ac5fe",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 69,
+        "word_count": 67,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". The CCS annotation tool automatically shrinks every user-drawn box to the minimum bounding-box around the enclosed text-cells for all purely text-based segments, which excludes only Table and Picture . For the latter, we instructed annotation staff to minimise inclusion of surrounding whitespace while including all graphical lines. A downside of snapping boxes to enclosed text cells is that some wrongly parsed PDF pages cannot be annotated correctly and need to be skipped",
+      "metadata": {
+        "chunk_id": "d0fcda5a963a29",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 70,
+        "word_count": 73,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Fourth, we established a way to flag pages as rejected for cases where no valid annotation according to the label guidelines could be achieved. Example cases for this would be PDF pages that render incorrectly or contain layouts that are impossible to capture with non-overlapping rectangles. Such rejected pages are not contained in the final dataset",
+      "metadata": {
+        "chunk_id": "2f5efed5a5abe8",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 71,
+        "word_count": 57,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Such rejected pages are not contained in the final dataset. With all these measures in place, experienced annotation staff managed to annotate a single page in a typical timeframe of 20s to 60s, depending on its complexity.",
+      "metadata": {
+        "chunk_id": "1ed79b4486368d",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 72,
+        "word_count": 38,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Table 2: Prediction performance (mAP@0.5-0.95) of object detection networks on DocLayNet test set. The MRCNN (Mask R-CNN) and FRCNN (Faster R-CNN) models with ResNet-50 or ResNet-101 backbone were trained based on the network architectures from the detectron2 model zoo (Mask R-CNN R50, R101-FPN 3x, Faster R-CNN R101-FPN 3x), with default configurations. The YOLO implementation utilized was YOLOv5x6 [13]. All models were initialised using pre-trained weights from the COCO 2017 dataset.",
+      "metadata": {
+        "chunk_id": "80785039b00447",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 73,
+        "word_count": 70,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| | human | MRCNN | MRCNN | FRCNN | YOLO |\n|----------------|---------|---------|---------|---------|--------|\n| | | R50 | R101 | R101 | v5x6 |\n| Caption | 84-89 | 68.4 | 71.5 | 70.1 | 77.7 |\n| Footnote | 83-91 | 70.9 | 71.8 | 73.7 | 77.2 |\n| Formula | 83-85 | 60.1 | 63.4 | 63.5 | 66.2 |\n| List-item | 87-88 | 81.2 | 80.8 | 81.0 | 86.2 |\n| Page-footer | 93-94 | 61.6 | 59.3 | 58.9 | 61.1 |\n| Page-header | 85-89 | 71.9 | 70.0 | 72.0 | 67.9 |\n| Picture | 69-71 | 71.7 | 72.7 | 72.0 | 77.1 |",
+      "metadata": {
+        "chunk_id": "928661e7741cdd",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 74,
+        "word_count": 115,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| Picture | 69-71 | 71.7 | 72.7 | 72.0 | 77.1 |\n| Section-header | 83-84 | 67.6 | 69.3 | 68.4 | 74.6 |\n| Table | 77-81 | 82.2 | 82.9 | 82.2 | 86.3 |\n| Text | 84-86 | 84.6 | 85.8 | 85.4 | 88.1 |\n| Title | 60-72 | 76.7 | 80.4 | 79.9 | 82.7 |\n| All | 82-83 | 72.4 | 73.5 | 73.4 | 76.8 |",
+      "metadata": {
+        "chunk_id": "eef892b93aefff",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "4 ANNOTATION CAMPAIGN",
+        "language": "en",
+        "chunk_index": 75,
+        "word_count": 78,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "The primary goal of DocLayNet is to obtain high-quality ML models capable of accurate document-layout analysis on a wide variety of challenging layouts. As discussed in Section 2, object detection models are currently the easiest to use, due to the standardisation of ground-truth data in COCO format [16] and the availability of general frameworks such as detectron2 [17]",
+      "metadata": {
+        "chunk_id": "0ae930c5157e9d",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "5 EXPERIMENTS",
+        "language": "en",
+        "chunk_index": 76,
+        "word_count": 58,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Furthermore, baseline numbers in PubLayNet and DocBank were obtained using standard object detection models such as Mask R-CNN and Faster R-CNN. As such, we will relate to these object detection methods in this paper and leave the detailed evaluation of more recent methods mentioned in Section 2 for future work.",
+      "metadata": {
+        "chunk_id": "a4fc6a5778d5bb",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "5 EXPERIMENTS",
+        "language": "en",
+        "chunk_index": 77,
+        "word_count": 51,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Figure 5: Prediction performance (mAP@0.5-0.95) of a Mask R-CNNnetworkwithResNet50backbonetrainedonincreasing fractions of the DocLayNet dataset. The learning curve flattens around the 80% mark, indicating that increasing the size of the DocLayNet dataset with similar data will not yield significantly better predictions.  \n<!-- image -->",
+      "metadata": {
+        "chunk_id": "8c24b5d4d132fa",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "5 EXPERIMENTS",
+        "language": "en",
+        "chunk_index": 78,
+        "word_count": 43,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "<!-- image -->  \nIn this section, we will present several aspects related to the performance of object detection models on DocLayNet. Similarly as in PubLayNet, we will evaluate the quality of their predictions using mean average precision (mAP) with 10 overlaps that range from 0.5 to 0.95 in steps of 0.05 (mAP@0.5-0.95). These scores are computed by leveraging the evaluation code provided by the COCO API [16].",
+      "metadata": {
+        "chunk_id": "ba451e58f66f6e",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "5 EXPERIMENTS",
+        "language": "en",
+        "chunk_index": 79,
+        "word_count": 67,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "In Table 2, we present baseline experiments (given in mAP) on Mask R-CNN [12], Faster R-CNN [11], and YOLOv5 [13]. Both training and evaluation were performed on RGB images with dimensions of 1025 × 1025 pixels. For training, we only used one annotation in case of redundantly annotated pages. As one can observe, the variation in mAP between the models is rather low, but overall between 6 and 10% lower than the mAP computed from the pairwise human annotations on triple-annotated pages",
+      "metadata": {
+        "chunk_id": "5e3b062b21bba6",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Baselines for Object Detection",
+        "language": "en",
+        "chunk_index": 80,
+        "word_count": 82,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". This gives a good indication that the DocLayNet dataset poses a worthwhile challenge for the research community to close the gap between human recognition and ML approaches. It is interesting to see that Mask R-CNN and Faster R-CNN produce very comparable mAP scores, indicating that pixel-based image segmentation derived from bounding-boxes does not help to obtain better predictions",
+      "metadata": {
+        "chunk_id": "bb2f581b34de8d",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Baselines for Object Detection",
+        "language": "en",
+        "chunk_index": 81,
+        "word_count": 59,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". On the other hand, the more recent Yolov5x model does very well and even out-performs humans on selected labels such as Text , Table and Picture . This is not entirely surprising, as Text , Table and Picture are abundant and the most visually distinctive in a document.",
+      "metadata": {
+        "chunk_id": "3f2f438f5658e0",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Baselines for Object Detection",
+        "language": "en",
+        "chunk_index": 82,
+        "word_count": 49,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Table 3: Performance of a Mask R-CNN R50 network in mAP@0.5-0.95 scores trained on DocLayNet with different class label sets. The reduced label sets were obtained by either down-mapping or dropping labels.  \n| Class-count | 11 | 6 | 5 | 4 |\n|----------------|------|---------|---------|---------|\n| Caption | 68 | Text | Text | Text |\n| Footnote | 71 | Text | Text | Text |\n| Formula | 60 | Text | Text | Text |\n| List-item | 81 | Text | 82 | Text |\n| Page-footer | 62 | 62 | - | - |",
+      "metadata": {
+        "chunk_id": "069e8e9df7ef35",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Baselines for Object Detection",
+        "language": "en",
+        "chunk_index": 83,
+        "word_count": 99,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| Page-footer | 62 | 62 | - | - |\n| Page-header | 72 | 68 | - | - |\n| Picture | 72 | 72 | 72 | 72 |\n| Section-header | 68 | 67 | 69 | 68 |\n| Table | 82 | 83 | 82 | 82 |\n| Text | 85 | 84 | 84 | 84 |\n| Title | 77 | Sec.-h. | Sec.-h. | Sec.-h. |\n| Overall | 72 | 73 | 78 | 77 |",
+      "metadata": {
+        "chunk_id": "094ba01ced7e44",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Baselines for Object Detection",
+        "language": "en",
+        "chunk_index": 84,
+        "word_count": 88,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "One of the fundamental questions related to any dataset is if it is 'large enough'. To answer this question for DocLayNet, we performed a data ablation study in which we evaluated a Mask R-CNN model trained on increasing fractions of the DocLayNet dataset. As can be seen in Figure 5, the mAP score rises sharply in the beginning and eventually levels out. To estimate the error-bar on the metrics, we ran the training five times on the entire data-set",
+      "metadata": {
+        "chunk_id": "db0aaaf5e8ef40",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Learning Curve",
+        "language": "en",
+        "chunk_index": 85,
+        "word_count": 79,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". This resulted in a 1% error-bar, depicted by the shaded area in Figure 5. In the inset of Figure 5, we show the exact same data-points, but with a logarithmic scale on the x-axis. As is expected, the mAP score increases linearly as a function of the data-size in the inset. The curve ultimately flattens out between the 80% and 100% mark, with the 80% mark falling within the error-bars of the 100% mark",
+      "metadata": {
+        "chunk_id": "58b087c8693f8f",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Learning Curve",
+        "language": "en",
+        "chunk_index": 86,
+        "word_count": 75,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". This provides a good indication that the model would not improve significantly by yet increasing the data size. Rather, it would probably benefit more from improved data consistency (as discussed in Section 3), data augmentation methods [23], or the addition of more document categories and styles.",
+      "metadata": {
+        "chunk_id": "244bbe89f6640f",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Learning Curve",
+        "language": "en",
+        "chunk_index": 87,
+        "word_count": 47,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "The choice and number of labels can have a significant effect on the overall model performance. Since PubLayNet, DocBank and DocLayNet all have different label sets, it is of particular interest to understand and quantify this influence of the label set on the model performance. We investigate this by either down-mapping labels into more common ones (e.g. Caption → Text ) or excluding them from the annotations entirely",
+      "metadata": {
+        "chunk_id": "a0cb2caa182dd9",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Impact of Class Labels",
+        "language": "en",
+        "chunk_index": 88,
+        "word_count": 68,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Furthermore, it must be stressed that all mappings and exclusions were performed on the data before model training. In Table 3, we present the mAP scores for a Mask R-CNN R50 network on different label sets. Where a label is down-mapped, we show its corresponding label, otherwise it was excluded. We present three different label sets, with 6, 5 and 4 different labels respectively. The set of 5 labels contains the same labels as PubLayNet",
+      "metadata": {
+        "chunk_id": "cc64ac9b0f887a",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Impact of Class Labels",
+        "language": "en",
+        "chunk_index": 89,
+        "word_count": 76,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". The set of 5 labels contains the same labels as PubLayNet. However, due to the different definition of lists in PubLayNet (grouped list-items) versus DocLayNet (separate list-items), the label set of size 4 is the closest to PubLayNet, in the assumption that the List is down-mapped to Text in PubLayNet. The results in Table 3 show that the prediction accuracy on the remaining class labels does not change significantly when other classes are merged into them",
+      "metadata": {
+        "chunk_id": "e920568103577c",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Impact of Class Labels",
+        "language": "en",
+        "chunk_index": 90,
+        "word_count": 77,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". The overall macro-average improves by around 5%, in particular when Page-footer and Page-header are excluded.",
+      "metadata": {
+        "chunk_id": "c73ca2d06fe35d",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Impact of Class Labels",
+        "language": "en",
+        "chunk_index": 91,
+        "word_count": 16,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Table 4: Performance of a Mask R-CNN R50 network with document-wise and page-wise split for different label sets. Naive page-wise split will result in /tildelow 10% point improvement.  \n| Class-count Split | 11 | 11 | 5 | 5 |\n|---------------------|------|------|-----|------|\n| | Doc | Page | Doc | Page |\n| Caption | 68 | 83 | | |\n| Footnote | 71 | 84 | | |\n| Formula | 60 | 66 | | |\n| List-item | 81 | 88 | 82 | 88 |\n| Page-footer | 62 | 89 | | |\n| Page-header | 72 | 90 | | |\n| Picture | 72 | 82 | 72 | 82 |",
+      "metadata": {
+        "chunk_id": "f9fb2429ce6eba",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Impact of Class Labels",
+        "language": "en",
+        "chunk_index": 92,
+        "word_count": 118,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| Page-header | 72 | 90 | | |\n| Picture | 72 | 82 | 72 | 82 |\n| Section-header | 68 | 83 | 69 | 83 |\n| Table | 82 | 89 | 82 | 90 |\n| Text | 85 | 91 | 84 | 90 |\n| Title | 77 | 81 | | |\n| All | 72 | 84 | 78 | 87 |",
+      "metadata": {
+        "chunk_id": "69cd143cd75de7",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Impact of Class Labels",
+        "language": "en",
+        "chunk_index": 93,
+        "word_count": 73,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "## Impact of Document Split in Train and Test Set",
+      "metadata": {
+        "chunk_id": "023dd73ecfd8e4",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Impact of Document Split in Train and Test Set",
+        "language": "en",
+        "chunk_index": 94,
+        "word_count": 10,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Many documents in DocLayNet have a unique styling. In order to avoid overfitting on a particular style, we have split the train-, test- and validation-sets of DocLayNet on document boundaries, i.e. every document contributes pages to only one set. To the best of our knowledge, this was not considered in PubLayNet or DocBank. To quantify how this affects model performance, we trained and evaluated a Mask R-CNN R50 model on a modified dataset version",
+      "metadata": {
+        "chunk_id": "8029dcefbe288f",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Impact of Document Split in Train and Test Set",
+        "language": "en",
+        "chunk_index": 95,
+        "word_count": 74,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Here, the train-, test- and validation-sets were obtained by a randomised draw over the individual pages. As can be seen in Table 4, the difference in model performance is surprisingly large: pagewise splitting gains ˜ 10% in mAP over the document-wise splitting. Thus, random page-wise splitting of DocLayNet can easily lead to accidental overestimation of model performance and should be avoided.",
+      "metadata": {
+        "chunk_id": "a65c3912934492",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Impact of Document Split in Train and Test Set",
+        "language": "en",
+        "chunk_index": 96,
+        "word_count": 62,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "Throughout this paper, we claim that DocLayNet's wider variety of document layouts leads to more robust layout detection models. In Table 5, we provide evidence for that. We trained models on each of the available datasets (PubLayNet, DocBank and DocLayNet) and evaluated them on the test sets of the other datasets. Due to the different label sets and annotation styles, a direct comparison is not possible. Hence, we focussed on the common labels among the datasets",
+      "metadata": {
+        "chunk_id": "72e2ae9cac7b63",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Dataset Comparison",
+        "language": "en",
+        "chunk_index": 97,
+        "word_count": 76,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Hence, we focussed on the common labels among the datasets. Between PubLayNet and DocLayNet, these are Picture , KDD '22, August 14-18, 2022, Washington, DC, USA Birgit Pfitzmann, Christoph Auer, Michele Dolfi, Ahmed S. Nassar, and Peter Staar Table 5: Prediction Performance (mAP@0.5-0.95) of a Mask R-CNN R50 network across the PubLayNet, DocBank &amp; DocLayNet data-sets",
+      "metadata": {
+        "chunk_id": "f243d074132f7f",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Dataset Comparison",
+        "language": "en",
+        "chunk_index": 98,
+        "word_count": 57,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". By evaluating on common label classes of each dataset, we observe that the DocLayNet-trained model has much less pronounced variations in performance across all datasets.",
+      "metadata": {
+        "chunk_id": "6a9f954fe3ab58",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Dataset Comparison",
+        "language": "en",
+        "chunk_index": 99,
+        "word_count": 26,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| | | Testing on | Testing on | Testing on |\n|-----------------|------------|--------------|--------------|--------------|\n| Training on | labels | PLN | DB | DLN |\n| PubLayNet (PLN) | Figure | 96 | 43 | 23 |\n| PubLayNet (PLN) | Sec-header | 87 | - | 32 |\n| | Table | 95 | 24 | 49 |\n| | Text | 96 | - | 42 |\n| | total | 93 | 34 | 30 |\n| DocBank (DB) | Figure | 77 | 71 | 31 |\n| DocBank (DB) | Table | 19 | 65 | 22 |\n| DocBank (DB) | total | 48 | 68 | 27 |\n| DocLayNet (DLN) | Figure | 67 | 51 | 72 |",
+      "metadata": {
+        "chunk_id": "cb23d7042290f6",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Dataset Comparison",
+        "language": "en",
+        "chunk_index": 100,
+        "word_count": 127,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "| DocLayNet (DLN) | Figure | 67 | 51 | 72 |\n| DocLayNet (DLN) | Sec-header | 53 | - | 68 |\n| | Table | 87 | 43 | 82 |\n| | Text | 77 | - | 84 |\n| | total | 59 | 47 | 78 |  \nSection-header , Table and Text . Before training, we either mapped or excluded DocLayNet's other labels as specified in table 3, and also PubLayNet's List to Text . Note that the different clustering of lists (by list-element vs. whole list objects) naturally decreases the mAP score for Text .",
+      "metadata": {
+        "chunk_id": "5444465cfe8490",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Dataset Comparison",
+        "language": "en",
+        "chunk_index": 101,
+        "word_count": 103,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "For comparison of DocBank with DocLayNet, we trained only on Picture and Table clusters of each dataset. We had to exclude Text because successive paragraphs are often grouped together into a single object in DocBank. This paragraph grouping is incompatible with the individual paragraphs of DocLayNet. As can be seen in Table 5, DocLayNet trained models yield better performance compared to the previous datasets",
+      "metadata": {
+        "chunk_id": "ed9dade1b4960c",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Dataset Comparison",
+        "language": "en",
+        "chunk_index": 102,
+        "word_count": 64,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". It is noteworthy that the models trained on PubLayNet and DocBank perform very well on their own test set, but have a much lower performance on the foreign datasets. While this also applies to DocLayNet, the difference is far less pronounced. Thus we conclude that DocLayNet trained models are overall more robust and will produce better results for challenging, unseen layouts.",
+      "metadata": {
+        "chunk_id": "a091b769a0114e",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Dataset Comparison",
+        "language": "en",
+        "chunk_index": 103,
+        "word_count": 62,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "## Example Predictions  \nTo conclude this section, we illustrate the quality of layout predictions one can expect from DocLayNet-trained models by providing a selection of examples without any further post-processing applied. Figure 6 shows selected layout predictions on pages from the test-set of DocLayNet. Results look decent in general across document categories, however one can also observe mistakes such as overlapping clusters of different classes, or entirely missing boxes due to low confidence.",
+      "metadata": {
+        "chunk_id": "e9c4ed47bdaf1a",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Example Predictions",
+        "language": "en",
+        "chunk_index": 104,
+        "word_count": 73,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "In this paper, we presented the DocLayNet dataset. It provides the document conversion and layout analysis research community a new and challenging dataset to improve and fine-tune novel ML methods on. In contrast to many other datasets, DocLayNet was created by human annotation in order to obtain reliable layout ground-truth on a wide variety of publication- and typesettingstyles. Including a large proportion of documents outside the scientific publishing domain adds significant value in this respect.",
+      "metadata": {
+        "chunk_id": "9b9241d6614f11",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "6 CONCLUSION",
+        "language": "en",
+        "chunk_index": 105,
+        "word_count": 75,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "From the dataset, we have derived on the one hand reference metrics for human performance on document-layout annotation (through double and triple annotations) and on the other hand evaluated the baseline performance of commonly used object detection methods. We also illustrated the impact of various dataset-related aspects on model performance through data-ablation experiments, both from a size and class-label perspective",
+      "metadata": {
+        "chunk_id": "7ec9b5d45e4796",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "6 CONCLUSION",
+        "language": "en",
+        "chunk_index": 106,
+        "word_count": 60,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": ". Last but not least, we compared the accuracy of models trained on other public datasets and showed that DocLayNet trained models are more robust.",
+      "metadata": {
+        "chunk_id": "28f907b1d24704",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "6 CONCLUSION",
+        "language": "en",
+        "chunk_index": 107,
+        "word_count": 25,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "To date, there is still a significant gap between human and ML accuracy on the layout interpretation task, and we hope that this work will inspire the research community to close that gap.",
+      "metadata": {
+        "chunk_id": "1ec18f54dd0c58",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "6 CONCLUSION",
+        "language": "en",
+        "chunk_index": 108,
+        "word_count": 33,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "## REFERENCES  \n- [1] Max Göbel, Tamir Hassan, Ermelinda Oro, and Giorgio Orsi. Icdar 2013 table competition. In 2013 12th International Conference on Document Analysis and Recognition , pages 1449-1453, 2013.\n- [2] Christian Clausner, Apostolos Antonacopoulos, and Stefan Pletschacher. Icdar2017 competition on recognition of documents with complex layouts rdcl2017. In 2017 14th IAPR International Conference on Document Analysis and Recognition (ICDAR) , volume 01, pages 1404-1410, 2017.",
+      "metadata": {
+        "chunk_id": "db0f7e7243fd73",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "REFERENCES",
+        "language": "en",
+        "chunk_index": 109,
+        "word_count": 68,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- [3] Hervé Déjean, Jean-Luc Meunier, Liangcai Gao, Yilun Huang, Yu Fang, Florian Kleber, and Eva-Maria Lang. ICDAR 2019 Competition on Table Detection and Recognition (cTDaR), April 2019. http://sac.founderit.com/.\n- [4] Antonio Jimeno Yepes, Peter Zhong, and Douglas Burdick. Competition on scientific literature parsing. In Proceedings of the International Conference on Document Analysis and Recognition , ICDAR, pages 605-617. LNCS 12824, SpringerVerlag, sep 2021.",
+      "metadata": {
+        "chunk_id": "671471c5576211",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "REFERENCES",
+        "language": "en",
+        "chunk_index": 110,
+        "word_count": 64,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- [5] Logan Markewich, Hao Zhang, Yubin Xing, Navid Lambert-Shirzad, Jiang Zhexin, Roy Lee, Zhi Li, and Seok-Bum Ko. Segmentation for document layout analysis: not dead yet. International Journal on Document Analysis and Recognition (IJDAR) , pages 1-11, 01 2022.\n- [6] Xu Zhong, Jianbin Tang, and Antonio Jimeno-Yepes. Publaynet: Largest dataset ever for document layout analysis. In Proceedings of the International Conference on Document Analysis and Recognition , ICDAR, pages 1015-1022, sep 2019.",
+      "metadata": {
+        "chunk_id": "583f3a9999e2f5",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "REFERENCES",
+        "language": "en",
+        "chunk_index": 111,
+        "word_count": 74,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- [7] Minghao Li, Yiheng Xu, Lei Cui, Shaohan Huang, Furu Wei, Zhoujun Li, and Ming Zhou. Docbank: A benchmark dataset for document layout analysis. In Proceedings of the 28th International Conference on Computational Linguistics , COLING, pages 949-960. International Committee on Computational Linguistics, dec 2020.\n- [8] Riaz Ahmad, Muhammad Tanvir Afzal, and M. Qadir. Information extraction from pdf sources based on rule-based system using integrated formats. In SemWebEval@ESWC , 2016.",
+      "metadata": {
+        "chunk_id": "65c896731cd15b",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "REFERENCES",
+        "language": "en",
+        "chunk_index": 112,
+        "word_count": 72,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- [9] Ross B. Girshick, Jeff Donahue, Trevor Darrell, and Jitendra Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. In IEEE Conference on Computer Vision and Pattern Recognition , CVPR, pages 580-587. IEEE Computer Society, jun 2014.\n- [10] Ross B. Girshick. Fast R-CNN. In 2015 IEEE International Conference on Computer Vision , ICCV, pages 1440-1448. IEEE Computer Society, dec 2015.",
+      "metadata": {
+        "chunk_id": "4f8f0edc249f62",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "REFERENCES",
+        "language": "en",
+        "chunk_index": 113,
+        "word_count": 64,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- [11] Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun. Faster r-cnn: Towards real-time object detection with region proposal networks. IEEE Transactions on Pattern Analysis and Machine Intelligence , 39(6):1137-1149, 2017.\n- [12] Kaiming He, Georgia Gkioxari, Piotr Dollár, and Ross B. Girshick. Mask R-CNN. In IEEE International Conference on Computer Vision , ICCV, pages 2980-2988. IEEE Computer Society, Oct 2017.",
+      "metadata": {
+        "chunk_id": "95e5fe60acb900",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "REFERENCES",
+        "language": "en",
+        "chunk_index": 114,
+        "word_count": 62,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "- [13] Glenn Jocher, Alex Stoken, Ayush Chaurasia, Jirka Borovec, NanoCode012, TaoXie, Yonghye Kwon, Kalen Michael, Liu Changyu, Jiacong Fang, Abhiram V, Laughing, tkianai, yxNONG, Piotr Skalski, Adam Hogan, Jebastin Nadar, imyhxy, Lorenzo Mammana, Alex Wang, Cristi Fati, Diego Montes, Jan Hajek, Laurentiu",
+      "metadata": {
+        "chunk_id": "2084540083e3e8",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "REFERENCES",
+        "language": "id",
+        "chunk_index": 115,
+        "word_count": 43,
+        "is_table": false,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "[TABLE 1]\n class label Count % of Total.Train % of Total.Test % of Total.Val triple inter-annotator mAP @0.5-0.95 (%).All triple inter-annotator mAP @0.5-0.95 (%).Fin triple inter-annotator mAP @0.5-0.95 (%).Man triple inter-annotator mAP @0.5-0.95 (%).Sci triple inter-annotator mAP @0.5-0.95 (%).Law triple inter-annotator mAP @0.5-0.95 (%).Pat triple inter-annotator mAP @0.5-0.95 (%).Ten\n Caption 22524 2.04 1.77 2.32 84-89 40-61 86-92 94-99 95-99 69-78 n/a\n Footnote 6318 0.60 0.31 0.58 83-91 n/a 100 62-88 85-94 n/a 82-97\n Formula 25027 2.25 1.90 2.96 83-85 n/a n/a 84-87 86-96 n/a n/a\n List-item 185660 17.19 13.34 15.82 87-88 74-83 90-92 97-97 81-85 75-88 93-95\n Page-footer 70878 6.51 5.58 6.00 93-94 88-90 95-96 100 92-97 100 96-98\n Page-header 58022 5.10 6.70 5.06 85-89 66-76 90-94 98-100 91-92 97-99 81-86\n Picture 45976 4.21 2.78 5.31 69-71 56-59 82-86 69-82 80-95 66-71 59-76\nSection-header 142884 12.60 15.77 12.85 83-84 76-81 90-92 94-95 87-94 69-73 78-86\n Table 34733 3.20 2.27 3.60 77-81 75-80 83-86 98-99 58-80 79-84 70-85\n Text 510377 45.82 49.28 45.00 84-86 81-86 88-93 89-93 87-92 71-79 87-95\n Title 5071 0.47 0.30 0.50 60-72 24-63 50-63 94-100 82-96 68-79 24-56\n Total 1107470 941123 99816 66531 82-83 71-74 79-81 89-94 86-91 71-76 68-85",
+      "metadata": {
+        "chunk_id": "183296b9d70fa1",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Table 1",
+        "language": "en",
+        "chunk_index": 116,
+        "word_count": 193,
+        "is_table": true,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "[TABLE 2]\n human. MRCNN.R50 MRCNN.R101 FRCNN.R101 YOLO.v5x6\n Caption 84-89 68.4 71.5 70.1 77.7\n Footnote 83-91 70.9 71.8 73.7 77.2\n Formula 83-85 60.1 63.4 63.5 66.2\n List-item 87-88 81.2 80.8 81.0 86.2\n Page-footer 93-94 61.6 59.3 58.9 61.1\n Page-header 85-89 71.9 70.0 72.0 67.9\n Picture 69-71 71.7 72.7 72.0 77.1\nSection-header 83-84 67.6 69.3 68.4 74.6\n Table 77-81 82.2 82.9 82.2 86.3\n Text 84-86 84.6 85.8 85.4 88.1\n Title 60-72 76.7 80.4 79.9 82.7\n All 82-83 72.4 73.5 73.4 76.8",
+      "metadata": {
+        "chunk_id": "2cb8486ff5d9d5",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Table 2",
+        "language": "en",
+        "chunk_index": 117,
+        "word_count": 79,
+        "is_table": true,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "[TABLE 3]\n Class-count 11 6 5 4\n Caption 68 Text Text Text\n Footnote 71 Text Text Text\n Formula 60 Text Text Text\n List-item 81 Text 82 Text\n Page-footer 62 62 - -\n Page-header 72 68 - -\n Picture 72 72 72 72\nSection-header 68 67 69 68\n Table 82 83 82 82\n Text 85 84 84 84\n Title 77 Sec.-h. Sec.-h. Sec.-h.\n Overall 72 73 78 77",
+      "metadata": {
+        "chunk_id": "b38b33da9a959f",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Table 3",
+        "language": "en",
+        "chunk_index": 118,
+        "word_count": 67,
+        "is_table": true,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "[TABLE 4]\nClass-count Split. 11.Doc 11.Page 5.Doc 5.Page\n Caption 68 83 \n Footnote 71 84 \n Formula 60 66 \n List-item 81 88 82 88\n Page-footer 62 89 \n Page-header 72 90 \n Picture 72 82 72 82\n Section-header 68 83 69 83\n Table 82 89 82 90\n Text 85 91 84 90\n Title 77 81 \n All 72 84 78 87",
+      "metadata": {
+        "chunk_id": "1daa87979a5479",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Table 4",
+        "language": "en",
+        "chunk_index": 119,
+        "word_count": 56,
+        "is_table": true,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    },
+    {
+      "text": "[TABLE 5]\n Training on labels Testing on.PLN Testing on.DB Testing on.DLN\nPubLayNet (PLN) Figure 96 43 23\nPubLayNet (PLN) Sec-header 87 - 32\n Table 95 24 49\n Text 96 - 42\n total 93 34 30\n DocBank (DB) Figure 77 71 31\n DocBank (DB) Table 19 65 22\n DocBank (DB) total 48 68 27\nDocLayNet (DLN) Figure 67 51 72\nDocLayNet (DLN) Sec-header 53 - 68\n Table 87 43 82\n Text 77 - 84\n total 59 47 78",
+      "metadata": {
+        "chunk_id": "68166185928062",
+        "source": "2206.01062v1.pdf",
+        "filepath": "C:\\Users\\PARVATHI\\ai-document-qa-system-2026\\member1\\2206.01062v1.pdf",
+        "doc_type": "unknown",
+        "section": "Table 5",
+        "language": "en",
+        "chunk_index": 120,
+        "word_count": 77,
+        "is_table": true,
+        "processed_at": "2026-06-19T16:32:18.663966"
+      }
+    }
+  ]
+}
