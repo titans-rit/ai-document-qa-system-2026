@@ -9,6 +9,7 @@ retrieval pipeline, swap it in here without touching anything else.
 
 import streamlit as st
 import ollama
+from member2.retriever import retrieve
 
 st.set_page_config(page_title="Document Q&A Assistant", page_icon="📄")
 st.title("📄 Document Q&A Assistant")
@@ -42,16 +43,7 @@ with st.sidebar:
 #    'text', 'source_file', 'page'
 # ---------------------------------------------------------------------
 def retrieve_chunks(question: str):
-    return [
-        {
-            "text": "The default OSPF hello interval is 10 seconds on "
-                    "broadcast and point-to-point networks, and 30 seconds "
-                    "on non-broadcast multi-access (NBMA) networks.",
-            "source_file": "Networking_User_Guide.pdf",
-            "page": 42,
-        }
-    ]
-
+    return retrieve(question)
 # ---------------------------------------------------------------------
 # 3. LLM call — answers ONLY from retrieved chunks, with citations
 # ---------------------------------------------------------------------
