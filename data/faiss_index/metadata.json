@@ -1,47 +1,127 @@
 [
   {
-    "text": "## Router and Switch Configuration Reference  \nSample document for testing PDF upload and Q&amp;A; retrieval.",
+    "text": "## 10.2 Release Notes  \nRelease Notes for Red Hat Enterprise Linux 10.2  \nRelease Notes for Red Hat Enterprise Linux 10.2",
     "page": 0,
-    "source_file": "Networking_User_Guide.pdf"
+    "source_file": "Red Hat Release Notes.pdf"
   },
   {
-    "text": "## Chapter 1: Introduction  \nThis guide covers the configuration and operation of common routing protocols used on enterprise network devices, including OSPF, BGP, and static routing. It is intended for network administrators configuring routers and Layer 3 switches.  \nEach section describes default timer values, configuration commands, and recommended practices for production deployments.",
+    "text": "## Legal Notice  \nCopyright © Red Hat.  \nExcept as otherwise noted below, the text of and illustrations in this documentation are licensed by Red Hat under the Creative Commons Attribution-Share Alike 3.0 Unported license . If you distribute this document or an adaptation of it, you must provide the URL for the original version.",
     "page": 1,
-    "source_file": "Networking_User_Guide.pdf"
+    "source_file": "Red Hat Release Notes.pdf"
   },
   {
-    "text": "## Chapter 2: VLAN Configuration  \nVirtual Local Area Networks (VLANs) allow a single physical switch to be logically segmented into multiple broadcast domains. VLANs are identified by a VLAN ID ranging from 1 to 4094.  \nTrunk ports carry traffic for multiple VLANs using 802.1Q tagging. Access ports carry traffic for a single VLAN and are typically used to connect end-user devices.",
+    "text": "Red Hat, as the licensor of this document, waives the right to enforce, and agrees not to assert, Section 4d of CC-BY-SA to the fullest extent permitted by applicable law.  \nRed Hat, the Red Hat logo, JBoss, Hibernate, and RHCE are trademarks or registered trademarks of Red Hat, LLC. or its subsidiaries in the United States and other countries.  \nLinux ® is the registered trademark of Linus Torvalds in the United States and other countries.",
     "page": 2,
-    "source_file": "Networking_User_Guide.pdf"
+    "source_file": "Red Hat Release Notes.pdf"
   },
   {
-    "text": "## Chapter 3: OSPF Configuration  \nOpen Shortest Path First (OSPF) is a link-state routing protocol used within a single autonomous system. Routers running OSPF exchange Hello packets to discover and maintain neighbor relationships.",
+    "text": "XFS is a trademark or registered trademark of Hewlett Packard Enterprise Development LP or its subsidiaries in the United States and other countries.  \nThe OpenStack ® Word Mark and OpenStack logo are trademarks or registered trademarks of the Linux Foundation, used under license.  \nAll other trademarks are the property of their respective owners.",
     "page": 3,
-    "source_file": "Networking_User_Guide.pdf"
+    "source_file": "Red Hat Release Notes.pdf"
   },
   {
-    "text": "## 3.1 Hello and Dead Intervals  \nThe Hello interval determines how often a router sends Hello packets on an OSPF-enabled interface. The Dead interval determines how long a router waits without receiving a Hello packet before declaring a neighbor down. By default, the Dead interval is four times the Hello interval.  \n| Network type | Default Hello interval | Default Dead interval |\n|-----------------------------------|--------------------------|-------------------------|\n| Broadcast (e.g. Ethernet) | 10 seconds | 40 seconds |\n| Point-to-point | 10 seconds | 40 seconds |",
+    "text": "## Abstract  \nThe Release Notes provide high-level coverage of the improvements and additions that have been implemented in Red Hat Enterprise Linux 10.2 and document known issues in this release, as well as notable fixed issues, Technology Previews, deprecated functionalities, functionalities removed in RHEL 10, and other details. For information about installing Red Hat Enterprise Linux, see Installation.",
     "page": 4,
-    "source_file": "Networking_User_Guide.pdf"
+    "source_file": "Red Hat Release Notes.pdf"
   },
   {
-    "text": "| Point-to-point | 10 seconds | 40 seconds |\n| Non-broadcast multi-access (NBMA) | 30 seconds | 120 seconds |  \nHello and Dead intervals must match between two neighboring routers for an adjacency to form.  \nMismatched timers are a common cause of OSPF neighbor relationships failing to establish.",
+    "text": "## Table of Contents  \n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
     "page": 5,
-    "source_file": "Networking_User_Guide.pdf"
+    "source_file": "Red Hat Release Notes.pdf"
   },
   {
-    "text": "## 3.2 Configuring Custom Timers  \nTo change the Hello interval on an interface, use the following command in interface configuration mode:  \n```\nrouter(config-if)# ip ospf hello-interval 5\n```  \nLowering the Hello interval can speed up failure detection but increases control-plane traffic. Most deployments retain the default values unless fast convergence is specifically required.",
+    "text": "| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . PROVIDINGFEEDBACKONREDHATDOCUMENTATION | . . . 6 |\n|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|",
     "page": 6,
-    "source_file": "Networking_User_Guide.pdf"
+    "source_file": "Red Hat Release Notes.pdf"
   },
   {
-    "text": "## Chapter 4: BGP Overview  \nBorder Gateway Protocol (BGP) is the routing protocol used between autonomous systems on the internet. Unlike OSPF, BGP uses a path-vector approach and relies on TCP for reliable transport between peers.  \nBGP keepalive messages are sent every 60 seconds by default, with a hold time of 180 seconds.",
+    "text": "| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 1. OVERVIEW OFREDHATENTERPRISE LINUX 10.2 | . . . 7 |\n| 1.1.MAJOR CHANGES IN RHEL 10.2 | 7 |\n| 1.1.1. Security | 7 |\n| 1.1.2. Infrastructure services | 7 |\n| 1.1.3. Kernel | 8 |\n| 1.1.4. Dynamic programming languages, web and database servers | 8 |",
     "page": 7,
-    "source_file": "Networking_User_Guide.pdf"
+    "source_file": "Red Hat Release Notes.pdf"
   },
   {
-    "text": "[TABLE 1]\n Network type Default Hello interval Default Dead interval\n Broadcast (e.g. Ethernet) 10 seconds 40 seconds\n Point-to-point 10 seconds 40 seconds\nNon-broadcast multi-access (NBMA) 30 seconds 120 seconds",
+    "text": "| 1.1.5. Compilers and development tools | 8 |\n| 1.1.6. Desktop | 9 |\n| 1.2. IN-PLACE UPGRADE | 9 |\n| 1.2.1. In-place upgrade from RHEL 9 to RHEL 10 | 10 |\n| 1.2.2. In-place upgrade from RHEL 8 to RHEL 10 | 10 |\n| 1.3. RED HAT CUSTOMER PORTAL LABS | 10 |\n| 1.4. ADDITIONAL RESOURCES | 11 |",
     "page": 8,
-    "source_file": "Networking_User_Guide.pdf"
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 1.4. ADDITIONAL RESOURCES | 11 |\n| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 2. ARCHITECTURES FORREDHATENTERPRISE LINUX 10.2 | . . . 12 |",
+    "page": 9,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 3. DISTRIBUTIONOFCONTENTINRHEL10 | . . . 13 |\n| 3.1. INSTALLATION | 13 |\n| 3.2. REPOSITORIES | 13 |\n| 3.3. APPLICATION STREAMS | 14 |",
+    "page": 10,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 3.3. APPLICATION STREAMS | 14 |\n| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER4.IMPORTANTCHANGESTOEXTERNALKERNELPARAMETERS | . . . 15 |\n| 4.1. NEWKERNEL PARAMETERS | 15 |\n| 4.2. UPDATED KERNEL PARAMETERS | 18 |\n| 4.3. REMOVED KERNEL PARAMETERS | 19 |\n| 4.4. NEWSYSCTL PARAMETERS | 19 |\n| 4.5. UPDATED SYSCTL PARAMETERS | 20 |",
+    "page": 11,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 4.5. UPDATED SYSCTL PARAMETERS | 20 |\n| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 5. DEVICE DRIVERS | . . . 21 |\n| 5.1. NEWDRIVERS | 21 |\n| 5.2. UPDATED DRIVERS | 28 |",
+    "page": 12,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 5.1. NEWDRIVERS | 21 |\n| 5.2. UPDATED DRIVERS | 28 |\n| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER6.NEWFEATURESANDENHANCEMENTS | . . . 30 |\n| 6.1. INSTALLER AND IMAGE CREATION | 30 |\n| 6.2. SECURITY | 32 |\n| 6.3. RHEL FOR EDGE | 41 |\n| 6.4. SOFTWARE MANAGEMENT | 41 |\n| 6.5. SHELLS AND COMMAND-LINE TOOLS | 42 |",
+    "page": 13,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 6.5. SHELLS AND COMMAND-LINE TOOLS | 42 |\n| 6.6. INFRASTRUCTURE SERVICES | 44 |\n| 6.7. NETWORKING | 47 |\n| 6.8. KERNEL | 53 |\n| 6.9.BOOTLOADER | 57 |\n| 6.10. FILE SYSTEMS AND STORAGE | 58 |\n| 6.11. HIGH AVAILABILITY AND CLUSTERS | 59 |\n| 6.12. DYNAMIC PROGRAMMING LANGUAGES,WEBANDDATABASE SERVERS | 60 |\n| 6.13. COMPILERS AND DEVELOPMENT TOOLS | 63 |\n| 6.14. IDENTITY MANAGEMENT | 68 |\n| 6.15. SSSD | 74 |\n| 6.16. DESKTOP | 75 |",
+    "page": 14,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 6.15. SSSD | 74 |\n| 6.16. DESKTOP | 75 |\n| 6.17.THEWEBCONSOLE 6.18. RED HAT ENTERPRISE LINUX SYSTEM ROLES | 77 78 |  \n| 6.19. VIRTUALIZATION | 81 |\n|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|\n| 6.20. SUPPORTABILITY | 83 |\n| 6.21. CONTAINERS | 84 |\n| 6.22. RHEL LIGHTSPEED | 89 |",
+    "page": 15,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 6.21. CONTAINERS | 84 |\n| 6.22. RHEL LIGHTSPEED | 89 |\n| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 7.TECHNOLOGYPREVIEWFEATURES | . . . . . 90 |\n| 7.1. INSTALLER AND IMAGE CREATION | 90 |\n| 7.2. FILE SYSTEMS AND STORAGE | 91 |\n| 7.3. IDENTITY MANAGEMENT | 91 |\n| 7.4. SSSD | 92 |\n| 7.5. DESKTOP | 92 |\n| 7.6. VIRTUALIZATION | 92 |",
+    "page": 16,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 7.5. DESKTOP | 92 |\n| 7.6. VIRTUALIZATION | 92 |\n| 7.7. CONTAINERS | 93 |\n| 7.8.TECHNOLOGY PREVIEW FEATURES IDENTIFIED IN RHEL 10.1 | 93 |\n| 7.8.1. Installer and image creation | 93 |\n| 7.8.2. Shells and command-line tools | 94 |\n| 7.8.3. Dynamic programming languages, web and database servers | 94 |\n| 7.8.4. Identity Management | 95 |\n| 7.8.5. Virtualization | 95 |\n| 7.8.6. Containers | 96 |",
+    "page": 17,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 7.8.5. Virtualization | 95 |\n| 7.8.6. Containers | 96 |\n| 7.9.TECHNOLOGY PREVIEW FEATURES IDENTIFIED IN RHEL 10.0 | 96 |\n| 7.9.1. Software management | 96 |\n| 7.9.2. Networking | 97 |\n| 7.9.3. Kernel | 97 |\n| 7.9.4. File systems and storage | 97 |\n| 7.9.5. Compilers and development tools 7.9.6. Identity Management | 98 98 |\n| 7.9.7. Virtualization | 99 |\n| 7.9.8. Containers | 100 |",
+    "page": 18,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 7.9.7. Virtualization | 99 |\n| 7.9.8. Containers | 100 |\n| 7.10.TECHNOLOGY PREVIEW FEATURES IDENTIFIED IN PREVIOUS | 101 |\n| 7.10.1. Networking | 101 |\n| | 101 |\n| 7.10.2. Identity Management | |\n| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 8. DEVELOPER PREVIEW | . . . 103 |\n| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . FEATURES | . . |\n| 8.2. RHEL LIGHTSPEED | 103 |\n| IN RHEL 10.1 | 104 |",
+    "page": 19,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 8.2. RHEL LIGHTSPEED | 103 |\n| IN RHEL 10.1 | 104 |\n| 8.3. DEVELOPER PREVIEW FEATURES IDENTIFIED | |\n| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 9.REMOVEDFEATURES | . . . . . 105 |\n| 9.2. INFRASTRUCTURE SERVICES | 105 |\n| 9.3. IDENTITY MANAGEMENT | 105 |\n| 9.4. SSSD | 106 |",
+    "page": 20,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 9.3. IDENTITY MANAGEMENT | 105 |\n| 9.4. SSSD | 106 |\n| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 10. DEPRECATED FEATURES | . . . . . 107 |\n| 10.1. HIGH AVAILABILITY AND CLUSTERS | 107 |\n| 10.2. CONTAINERS | 107 |\n| 10.3. DEPRECATED FEATURES IDENTIFIED IN RHEL 10.1 | 108 |\n| 10.3.1. Security | 108 |",
+    "page": 21,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "| 10.3.1. Security | 108 |\n| 10.3.2. Compilers and development tools | 108 |\n| 10.3.3. Virtualization DEPRECATED FEATURES | 108 |\n| 10.4. IDENTIFIED IN RHEL 10.0 | 109 |",
+    "page": 22,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "[TABLE 1]\n 0 1\n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . PROVIDINGFEEDBACKONREDHATDOCUMENTATION . . . 6\n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 1. OVERVIEW OFREDHATENTERPRISE LINUX 10.2 . . . 7\n 1.1.MAJOR CHANGES IN RHEL 10.2 7\n 1.1.1. Security 7\n 1.1.2. Infrastructure services 7\n 1.1.3. Kernel 8\n 1.1.4. Dynamic programming languages, web and database servers 8\n 1.1.5. Compilers and development tools 8\n 1.1.6. Desktop 9\n 1.2. IN-PLACE UPGRADE 9\n 1.2.1. In-place upgrade from RHEL 9 to RHEL 10 10\n 1.2.2. In-place upgrade from RHEL 8 to RHEL 10 10\n 1.3. RED HAT CUSTOMER PORTAL LABS 10\n 1.4. ADDITIONAL RESOURCES 11\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 2. ARCHITECTURES FORREDHATENTERPRISE LINUX 10.2 . . . 12\n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 3. DISTRIBUTIONOFCONTENTINRHEL10 . . . 13\n 3.1. INSTALLATION 13\n 3.2. REPOSITORIES 13\n 3.3. APPLICATION STREAMS 14\n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER4.IMPORTANTCHANGESTOEXTERNALKERNELPARAMETERS . . . 15\n 4.1. NEWKERNEL PARAMETERS 15\n 4.2. UPDATED KERNEL PARAMETERS 18\n 4.3. REMOVED KERNEL PARAMETERS 19\n 4.4. NEWSYSCTL PARAMETERS 19\n 4.5. UPDATED SYSCTL PARAMETERS 20\n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 5. DEVICE DRIVERS . . . 21\n 5.1. NEWDRIVERS 21\n 5.2. UPDATED DRIVERS 28\n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER6.NEWFEATURESANDENHANCEMENTS . . . 30\n 6.1. INSTALLER AND IMAGE CREATION 30\n 6.2. SECURITY 32\n 6.3. RHEL FOR EDGE 41\n 6.4. SOFTWARE MANAGEMENT 41\n 6.5. SHELLS AND COMMAND-LINE TOOLS 42\n 6.6. INFRASTRUCTURE SERVICES 44\n 6.7. NETWORKING 47\n 6.8. KERNEL 53\n 6.9.BOOTLOADER 57\n 6.10. FILE SYSTEMS AND STORAGE 58\n 6.11. HIGH AVAILABILITY AND CLUSTERS 59\n 6.12. DYNAMIC PROGRAMMING LANGUAGES,WEBANDDATABASE SERVERS 60\n 6.13. COMPILERS AND DEVELOPMENT TOOLS 63\n 6.14. IDENTITY MANAGEMENT 68\n 6.15. SSSD 74\n 6.16. DESKTOP 75\n 6.17.THEWEBCONSOLE 6.18. RED HAT ENTERPRISE LINUX SYSTEM ROLES 77 78",
+    "page": 23,
+    "source_file": "Red Hat Release Notes.pdf"
+  },
+  {
+    "text": "[TABLE 2]\n 0 1\n 6.19. VIRTUALIZATION 81\n 6.20. SUPPORTABILITY 83\n 6.21. CONTAINERS 84\n 6.22. RHEL LIGHTSPEED 89\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 7.TECHNOLOGYPREVIEWFEATURES . . . . . 90\n 7.1. INSTALLER AND IMAGE CREATION 90\n 7.2. FILE SYSTEMS AND STORAGE 91\n 7.3. IDENTITY MANAGEMENT 91\n 7.4. SSSD 92\n 7.5. DESKTOP 92\n 7.6. VIRTUALIZATION 92\n 7.7. CONTAINERS 93\n 7.8.TECHNOLOGY PREVIEW FEATURES IDENTIFIED IN RHEL 10.1 93\n 7.8.1. Installer and image creation 93\n 7.8.2. Shells and command-line tools 94\n 7.8.3. Dynamic programming languages, web and database servers 94\n 7.8.4. Identity Management 95\n 7.8.5. Virtualization 95\n 7.8.6. Containers 96\n 7.9.TECHNOLOGY PREVIEW FEATURES IDENTIFIED IN RHEL 10.0 96\n 7.9.1. Software management 96\n 7.9.2. Networking 97\n 7.9.3. Kernel 97\n 7.9.4. File systems and storage 97\n 7.9.5. Compilers and development tools 7.9.6. Identity Management 98 98\n 7.9.7. Virtualization 99\n 7.9.8. Containers 100\n 7.10.TECHNOLOGY PREVIEW FEATURES IDENTIFIED IN PREVIOUS 101\n 7.10.1. Networking 101\n 101\n 7.10.2. Identity Management \n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 8. DEVELOPER PREVIEW . . . 103\n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . FEATURES . .\n 8.2. RHEL LIGHTSPEED 103\n IN RHEL 10.1 104\n 8.3. DEVELOPER PREVIEW FEATURES IDENTIFIED \n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 9.REMOVEDFEATURES . . . . . 105\n 9.2. INFRASTRUCTURE SERVICES 105\n 9.3. IDENTITY MANAGEMENT 105\n 9.4. SSSD 106\n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . CHAPTER 10. DEPRECATED FEATURES . . . . . 107\n 10.1. HIGH AVAILABILITY AND CLUSTERS 107\n 10.2. CONTAINERS 107\n 10.3. DEPRECATED FEATURES IDENTIFIED IN RHEL 10.1 108\n 10.3.1. Security 108\n 10.3.2. Compilers and development tools 108\n 10.3.3. Virtualization DEPRECATED FEATURES 108\n 10.4. IDENTIFIED IN RHEL 10.0 109",
+    "page": 24,
+    "source_file": "Red Hat Release Notes.pdf"
   }
 ]
